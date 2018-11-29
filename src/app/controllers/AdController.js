@@ -19,6 +19,8 @@ class AdController {
       filters.title = new RegExp(req.query.title, 'i')
     }
 
+    filters.purchasedBy = { $exists: false }
+
     const ads = await Ad.paginate(filters, {
       page: req.query.page || 1,
       limit: 20,
